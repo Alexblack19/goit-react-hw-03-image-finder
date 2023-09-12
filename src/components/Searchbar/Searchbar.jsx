@@ -1,18 +1,23 @@
+import {} from './Searchbar.styled'
 
 
 
-<header class="searchbar">
-  <form class="form">
-    <button type="submit" class="button">
-      <span class="button-label">Search</span>
-    </button>
+export function Searchbar() {
+  return (
+    <header className="searchbar">
+      <Form className="form">
+        <Button type="submit" className="button">
+          <Span className="button-label">Search</Span>
+        </Button>
 
-    <input
-      class="input"
-      type="text"
-      autocomplete="off"
-      autofocus
-      placeholder="Search images and photos"
-    />
-  </form>
-</header>
+        <Input
+          className="input"
+          type="text"
+          autocomplete="off"
+          autofocus
+          placeholder="Search images and photos"
+        />
+      </Form>
+    </header>
+  );
+}
