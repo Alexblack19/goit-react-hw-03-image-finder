@@ -1,8 +1,8 @@
-import { Form, Button, Span, Input } from './Searchbar.styled';
+import { Header, Form, Button, Span, Input } from './Searchbar.styled';
 
 export function Searchbar() {
   return (
-    <header>
+    <Header>
       <Form>
         <Button type="submit">
           <Span>Search</Span>
@@ -15,6 +15,6 @@ export function Searchbar() {
           placeholder="Search images and photos"
         />
       </Form>
-    </header>
+    </Header>
   );
 }

@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 
+export const Header = styled.header`
+padding: 10px 0px;
+  background-color: #4354b0;
+`;
+
 export const Form = styled.form`
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 600px;
-  background-color: #fff;
-  border-radius: 3px;
+  background-color: #ffff;
+  border-radius: 5px;
   overflow: hidden;
 `;
 
@@ -15,8 +22,9 @@ export const Button = styled.button`
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url('https://img.icons8.com/dotty/80/mail.png');
-  background-size: 40%;
+  background-image: url('https://img.icons8.com/ios-filled/50/search--v1.png');
+  background-color: inherit;
+  background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0.6;
