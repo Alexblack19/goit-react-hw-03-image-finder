@@ -9,7 +9,7 @@ export class App extends Component {
   };
 
   toggleModal = () => {
-    this.setState(({ showModal }) => ({ showModal: !showModal }));
+    this.setState(({ showModal }) => ({ showModal: !showModal }));    
   };
 
   render() {
@@ -31,7 +31,7 @@ export class App extends Component {
               Close modal
             </button>
           </Modal>
-        )}        
+        )}
       </div>
     );
   }
