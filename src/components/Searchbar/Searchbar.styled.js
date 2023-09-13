@@ -22,7 +22,7 @@ export const Button = styled.button`
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url('https://img.icons8.com/ios-filled/50/search--v1.png');
+  background-image: url('https://img.icons8.com/metro/26/search.png');
   background-color: inherit;
   background-size: 50%;
   background-repeat: no-repeat;
