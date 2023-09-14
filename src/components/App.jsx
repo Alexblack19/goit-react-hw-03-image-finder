@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { GlobalStyle } from './GlobalStyle';
 import { Searchbar } from './Searchbar/Searchbar';
 import { Modal } from './Modal/Modal';
+// import { ImageGallery } from './ImageGallery/ImageGallery';
 
 export class App extends Component {
   state = {
@@ -21,6 +22,7 @@ export class App extends Component {
         </button>
         <GlobalStyle />
         <Searchbar />
+        {/* <ImageGallery /> */}
         {showModal && (
           <Modal onClose={this.toggleModal}>
             <img
