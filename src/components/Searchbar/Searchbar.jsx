@@ -2,18 +2,17 @@ import { Component } from 'react';
 import { Header, Form, Button, Span, Input } from './Searchbar.styled';
 
 export class Searchbar extends Component {
-  state = { photoTitle: '' };
+  state = { photoTag: '' };
 
   handleChange = e => {
-    this.setState({photoTitle: e.currentTarget.value})
+    this.setState({ photoTag: e.currentTarget.value });
   };
 
-  handleSubmit = e=>{
-    e.preventDefault()
-    this.props.onSubmit(this.state.photoTitle);
-    this.setState({ photoTitle: '' });
-
-  }
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.onSubmit(this.state.photoTag);
+    this.setState({ photoTag: '' });
+  };
 
   render() {
     return (

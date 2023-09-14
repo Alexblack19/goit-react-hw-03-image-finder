@@ -28,7 +28,10 @@ export class Modal extends Component {
   render() {
     return createPortal(
       <Overlay onClick={this.handleBackdropClick}>
-        <ModalDiv>{this.props.children}</ModalDiv>
+        <ModalDiv><img
+              src={this.props.image}
+              alt=""
+            /></ModalDiv>
       </Overlay>,
       modalRoot
     );
