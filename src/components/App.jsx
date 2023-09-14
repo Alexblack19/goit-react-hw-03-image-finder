@@ -7,10 +7,15 @@ import { Modal } from './Modal/Modal';
 export class App extends Component {
   state = {
     showModal: false,
+    photoTitle: ''
   };
 
   toggleModal = () => {
     this.setState(({ showModal }) => ({ showModal: !showModal }));
+  };
+
+  handleFormSubmit = photoTitle => {
+    this.setState({ photoTitle });
   };
 
   render() {
@@ -21,7 +26,7 @@ export class App extends Component {
           Open modal
         </button>
         <GlobalStyle />
-        <Searchbar />
+        <Searchbar onSubmit={this.handleFormSubmit}/>
         {/* <ImageGallery /> */}
         {showModal && (
           <Modal onClose={this.toggleModal}>

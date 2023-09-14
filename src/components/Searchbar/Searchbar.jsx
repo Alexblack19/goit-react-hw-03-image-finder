@@ -8,10 +8,17 @@ export class Searchbar extends Component {
     this.setState({photoTitle: e.currentTarget.value})
   };
 
+  handleSubmit = e=>{
+    e.preventDefault()
+    this.props.onSubmit(this.state.photoTitle);
+    this.setState({ photoTitle: '' });
+
+  }
+
   render() {
     return (
       <Header>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Button type="submit">
             <Span>Search</Span>
           </Button>
