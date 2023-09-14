@@ -31,7 +31,7 @@ export class App extends Component {
         {showModal && (
           <Modal onClose={this.toggleModal}>
             <img
-              src="https://pixabay.com/get/g000f464bc8125bcf88c7e9a03c1ac1732d9d8a1be8e5192a91618ddc2b4bdd4ab1a7797e2179cae4abcfa9808e2634e5cb8c3292874177ad012941abee2cd5da_1280.jpg"
+              src="https://pixabay.com/get/gd627b425afcad78d2020b32bc962b5fb8342c15634b91ef0529e6d8e455f3353d1cd65ef50aedf571dc6eef264b47b376516f1bccec8f168e591feca2c35d213_1280.jpg"
               alt=""
             />
             <button type="button" onClick={this.toggleModal}>

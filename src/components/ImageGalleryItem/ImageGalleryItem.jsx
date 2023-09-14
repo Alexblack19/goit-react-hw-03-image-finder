@@ -1,7 +1,7 @@
-export function ImageGalleryItem() {
-  return (
-    <li className="gallery-item">
-      <img src="" alt="" />
-    </li>
-  );
-}
+// export function ImageGalleryItem() {
+//   return (
+//     <li className="gallery-item">
+//       <img src="" alt="" />
+//     </li>
+//   );
+// }
