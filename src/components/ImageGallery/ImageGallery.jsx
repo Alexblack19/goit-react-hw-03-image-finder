@@ -9,17 +9,20 @@ export class ImageGallery extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const name = this.props.tagSearch;
-    if (prevProps.tagSearch !== name) {
-      fetchPhoto(name, 1).then(data => this.setState({ dataPhoto: data.hits }));
+    const searchTag = this.props.photoTag;
+    if (prevProps.photoTag !== searchTag) {
+      fetchPhoto(searchTag, 1).then(data =>
+        this.setState({ dataPhoto: data.hits })
+      );
     }
   }
 
   render() {
+    const { dataPhoto } = this.state;
     return (
       <Gallery>
-        {this.state.dataPhoto &&
-          this.state.dataPhoto.map(item => (
+        {dataPhoto &&
+          dataPhoto.map(item => (
             <ImageGalleryItem key={item.id} photo={item} />
           ))}
       </Gallery>

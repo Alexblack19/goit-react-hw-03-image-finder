@@ -19,18 +19,20 @@ export class App extends Component {
   };
 
   render() {
-    const { showModal } = this.state;
+    const { showModal, photoTag } = this.state;
+    const {handleFormSubmit, toggleModal} = this;
+
     return (
       <div>
-        <button type="button" onClick={this.toggleModal}>
+        {/* <button type="button" onClick={toggleModal}>
           Open modal
-        </button>
+        </button> */}
         <GlobalStyle />
-        <Searchbar onSubmit={this.handleFormSubmit} />
-        <ImageGallery tagSearch={this.state.photoTag}/>
+        <Searchbar onSubmit={handleFormSubmit} />
+        <ImageGallery photoTag={photoTag}/>
         {showModal && (
           <Modal
-            onClose={this.toggleModal}
+            onClose={toggleModal}
             image={
               'https://pixabay.com/get/gd627b425afcad78d2020b32bc962b5fb8342c15634b91ef0529e6d8e455f3353d1cd65ef50aedf571dc6eef264b47b376516f1bccec8f168e591feca2c35d213_1280.jpg'
             }
