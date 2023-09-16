@@ -15,6 +15,7 @@ export class ImageGallery extends Component {
 
   componentDidUpdate(prevProps) {
     // this.setState({ isLoading: true });
+
     const searchTag = this.props.photoTag;
     if (prevProps.photoTag !== searchTag) {
       this.fetchPhoto(searchTag, this.state.page);
@@ -43,6 +44,12 @@ export class ImageGallery extends Component {
             fontSize: '16px',
             width: '340px',
           })}
+        {dataPhoto &&
+          !dataPhoto.length &&
+          Notiflix.Notify.warning(
+            'Sorry, there are no images matching your search query. Please try again.',
+            { position: 'center-center' }
+          )}
         {dataPhoto &&
           dataPhoto.map(item => (
             <ImageGalleryItem key={item.id} photo={item} />

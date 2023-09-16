@@ -16,6 +16,7 @@ export class Searchbar extends Component {
       return;
     }
     this.props.onSubmit(this.state.photoTag);
+
     this.setState({ photoTag: '' });
   };
 
