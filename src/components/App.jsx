@@ -18,18 +18,19 @@ export class App extends Component {
     showModal: false,
     photoTag: '',
     isLoading: false,
+    loadMoreBtn: false,
   };
 
   componentDidUpdate(_, prevState) {
     const searchTag = this.state.photoTag;
     if (prevState.photoTag !== searchTag) {
-      
+      this.setState({ dataPhoto: null });
       this.fetchPhoto(searchTag, this.state.page);
     }
   }
 
   fetchPhoto = async (searchTag, page) => {
-    this.setState({ isLoading: true });
+    this.setState({ isLoading: true });   
     try {
       const data = await getAllPhoto(searchTag, page);
 
@@ -71,15 +72,14 @@ export class App extends Component {
     this.setState({ photoTag });
   };
 
-  handleLoadMore = () => {
+  handleLoadMore = () => {    
     const page = this.state.page + 1;
     this.setState({ page: page });
-    console.log(page);
     this.fetchPhoto(this.state.photoTag, page);
   };
 
   render() {
-    const { showModal, dataPhoto, isLoading } = this.state;
+    const { showModal, dataPhoto, isLoading, loadMoreBtn } = this.state;
     const { handleFormSubmit, toggleModal } = this;
 
     return (
@@ -101,7 +101,7 @@ export class App extends Component {
           />
         )}
 
-        <Button handleLoadMore={this.handleLoadMore} />
+        {loadMoreBtn && <Button handleLoadMore={this.handleLoadMore} />}
 
         <ToastContainer autoClose={3000} />
       </div>
