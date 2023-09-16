@@ -100,7 +100,7 @@ export class App extends Component {
           />
         )}
 
-        {dataPhoto && dataPhoto.length / page >= 12 && (
+        {dataPhoto && dataPhoto.length >= 12 && (
           <Button handleLoadMore={this.handleLoadMore} />
         )}
 
