@@ -1,8 +1,9 @@
+import { GalleryItem, Image } from './ImageGalleryItem.styled';
 
-export function ImageGalleryItem({ photo }) { 
+export function ImageGalleryItem({ photo: { webformatURL, tags } }) {
   return (
-    <li className="gallery-item">
-      <img src={photo.previewURL} alt={photo.tags} />
-    </li>
+    <GalleryItem>
+      <Image src={webformatURL} alt={tags} />
+    </GalleryItem>
   );
 }

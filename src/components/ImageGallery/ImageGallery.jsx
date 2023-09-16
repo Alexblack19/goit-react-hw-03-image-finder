@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { fetchPhoto } from '../../api/image-api';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
+import { Gallery } from './ImageGallery.styled';
 
 export class ImageGallery extends Component {
   state = {
@@ -16,12 +17,12 @@ export class ImageGallery extends Component {
 
   render() {
     return (
-      <ul className="gallery">
+      <Gallery>
         {this.state.dataPhoto &&
           this.state.dataPhoto.map(item => (
             <ImageGalleryItem key={item.id} photo={item} />
           ))}
-      </ul>
+      </Gallery>
     );
   }
 }

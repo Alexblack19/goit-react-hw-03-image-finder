@@ -9,13 +9,13 @@ export const fetchPhoto = async (photoTitle, page) => {
     params: {
       key: `${API_KEY}`,
       q: `${photoTitle}`,
-    //   image_type: 'photo',
+      // image_type: 'photo',
     //   orientation: 'horizontal',
     //   safesearch: true,
       page: page,
       per_page: `${numRequestedPhotos}`,
     },
-  });   
+  }); 
   return response.data;
 };
 
