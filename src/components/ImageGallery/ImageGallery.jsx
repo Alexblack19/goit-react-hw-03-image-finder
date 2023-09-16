@@ -26,6 +26,19 @@ export class ImageGallery extends Component {
     try {
       const data = await getAllPhoto(searchTag, page);
       this.setState({ dataPhoto: data.hits });
+      if (!data.hits.lenght) {
+        console.log(data.hits);
+        Notiflix.Notify.warning(
+          'Sorry, there are no images matching your search query. Please try again.',
+          {
+            position: 'center-center',
+            fontSize: '18px',
+            cssAnimationStyle: 'zoom',
+            cssAnimationDuration: 1000,
+            width: '380px',
+          }
+        );
+      }
     } catch (error) {
       this.setState({ error: error.message });
     } finally {
@@ -44,12 +57,7 @@ export class ImageGallery extends Component {
             fontSize: '16px',
             width: '340px',
           })}
-        {dataPhoto &&
-          !dataPhoto.length &&
-          Notiflix.Notify.warning(
-            'Sorry, there are no images matching your search query. Please try again.',
-            { position: 'center-center' }
-          )}
+
         {dataPhoto &&
           dataPhoto.map(item => (
             <ImageGalleryItem key={item.id} photo={item} />
