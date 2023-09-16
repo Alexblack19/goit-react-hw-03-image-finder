@@ -15,6 +15,8 @@ export class ImageGallery extends Component {
 
   componentDidUpdate(prevProps) {
     // this.setState({ isLoading: true });
+    console.log('до: ', prevProps.photoTag);
+    console.log('после: ', this.props.photoTag);
 
     const searchTag = this.props.photoTag;
     if (prevProps.photoTag !== searchTag) {
