@@ -1,3 +1,6 @@
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Component } from 'react';
 import { GlobalStyle } from './GlobalStyle';
 import { Searchbar } from './Searchbar/Searchbar';
@@ -20,7 +23,7 @@ export class App extends Component {
 
   render() {
     const { showModal, photoTag } = this.state;
-    const {handleFormSubmit, toggleModal} = this;
+    const { handleFormSubmit, toggleModal } = this;
 
     return (
       <div>
@@ -29,7 +32,7 @@ export class App extends Component {
         </button> */}
         <GlobalStyle />
         <Searchbar onSubmit={handleFormSubmit} />
-        <ImageGallery photoTag={photoTag}/>
+        <ImageGallery photoTag={photoTag} />
         {showModal && (
           <Modal
             onClose={toggleModal}
@@ -38,6 +41,7 @@ export class App extends Component {
             }
           />
         )}
+        <ToastContainer autoClose={3000}/>
       </div>
     );
   }
