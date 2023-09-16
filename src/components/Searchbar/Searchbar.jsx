@@ -11,8 +11,8 @@ export class Searchbar extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.state.photoTag.trim() === '') {      
-      toast.info('Enter your search query')
+    if (this.state.photoTag.trim() === '') {
+      toast.info('Enter your search query');
       return;
     }
     this.props.onSubmit(this.state.photoTag);
