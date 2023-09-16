@@ -1,13 +1,18 @@
-// import { Audio } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 
-// export function Loader() {
-//   <Audio
-//     height="100"
-//     width="100"
-//     color="#4fa94d"
-//     ariaLabel="audio-loading"
-//     wrapperStyle={{}}
-//     wrapperClass="wrapper-class"
-//     visible={true}
-//   />;
-// }
+export const Loader = () => {
+  return (
+    <ThreeDots 
+    height="80" 
+    width="80" 
+    radius="9"
+    color="#227acd" 
+    ariaLabel="three-dots-loading"
+    wrapperStyle={{}}
+    wrapperClassName=""
+    visible={true}
+     />
+  );
+};
+
+

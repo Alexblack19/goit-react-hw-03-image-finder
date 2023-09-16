@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const Header = styled.header`
-  padding: 10px 0px;  
+  padding: 10px 0px;
   background-color: #4354b0;
 `;
 
 export const Form = styled.form`
   margin-left: auto;
-  margin-right: auto; 
+  margin-right: auto;
   display: flex;
   align-items: center;
   width: 100%;
@@ -31,7 +31,8 @@ export const Button = styled.button`
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
-  &:hover {
+  &:hover,
+  :focus {
     opacity: 1;
   }
 `;
