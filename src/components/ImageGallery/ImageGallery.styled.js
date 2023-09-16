@@ -1,3 +1,10 @@
+import styled from 'styled-components';
+
+export const ImageGallery = styled.ul``
+
+
+
+
 // .ImageGallery {
 //     display: grid;
 //     max-width: calc(100vw - 48px);

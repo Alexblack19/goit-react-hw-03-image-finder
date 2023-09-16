@@ -1,20 +1,27 @@
 import { Component } from 'react';
 import { fetchPhoto } from '../../api/image-api';
-// import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
+import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 
 export class ImageGallery extends Component {
   state = {
     dataPhoto: null,
   };
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     const name = this.props.tagSearch;
-    if (name) {
+    if (prevProps.tagSearch !== name) {
       fetchPhoto(name, 1).then(data => this.setState({ dataPhoto: data.hits }));
     }
   }
 
   render() {
-    return <ul className="gallery">{/* <ImageGalleryItem /> */}</ul>;
+    return (
+      <ul className="gallery">
+        {this.state.dataPhoto &&
+          this.state.dataPhoto.map(item => (
+            <ImageGalleryItem key={item.id} photo={item} />
+          ))}
+      </ul>
+    );
   }
 }
