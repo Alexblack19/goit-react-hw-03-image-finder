@@ -13,7 +13,7 @@ export class ImageGallery extends Component {
     if (prevProps.photoTag !== searchTag) {
       fetchPhoto(searchTag, 2)
         .then(data => this.setState({ dataPhoto: data.hits }))
-        .catch(error => console.log(error.message));
+        .catch(error => console.log(error));
     }
   }
 

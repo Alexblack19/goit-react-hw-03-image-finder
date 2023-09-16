@@ -9,8 +9,7 @@ export const fetchPhoto = async (photoTag, page) => {
     params: {
       key: `${API_KEY}`,
       q: `${photoTag}`,     
-      safesearch: true,
-      image_type: 'photo',
+      safesearch: true,     
       orientation: 'horizontal',
       page: page,
       per_page: `${numRequestedPhotos}`,
