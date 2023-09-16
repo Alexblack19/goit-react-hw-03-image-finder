@@ -11,9 +11,9 @@ export class ImageGallery extends Component {
   componentDidUpdate(prevProps, prevState) {
     const searchTag = this.props.photoTag;
     if (prevProps.photoTag !== searchTag) {
-      fetchPhoto(searchTag, 1).then(data =>
-        this.setState({ dataPhoto: data.hits })
-      );
+      fetchPhoto(searchTag, 2)
+        .then(data => this.setState({ dataPhoto: data.hits }))
+        .catch(error => console.log(error.message));
     }
   }
 
