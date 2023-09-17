@@ -4,11 +4,11 @@ import Notiflix from 'notiflix';
 import { Component } from 'react';
 import { GlobalStyle } from './GlobalStyle';
 import { Searchbar } from './Searchbar/Searchbar';
-import { Modal } from './Modal/Modal';
+import { getAllPhoto } from '../api/image-api';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
-import { getAllPhoto } from '../api/image-api';
 import { Loader } from './Loader/Loader';
+import { Modal } from './Modal/Modal';
 
 export class App extends Component {
   state = {
@@ -25,8 +25,7 @@ export class App extends Component {
   componentDidUpdate(_, prevState) {
     const searchTag = this.state.photoTag;
     // console.log("compdidup", this.state.page);
-    if (prevState.photoTag !== searchTag) { 
-     
+    if (prevState.photoTag !== searchTag) {
       this.setState({ dataPhoto: null });
       this.fetchPhoto(searchTag, this.state.page);
     }
@@ -43,17 +42,17 @@ export class App extends Component {
         this.setState({ dataPhoto: [...this.state.dataPhoto, ...data.hits] });
       }
 
-      if (data.hits.length === 0) {
-        Notiflix.Notify.warning(
-          'Sorry, there are no images matching your search query. Please try again.',
-          {
-            position: 'center-center',
-            fontSize: '18px',
-            cssAnimationStyle: 'zoom',
-            cssAnimationDuration: 1000,
-            width: '380px',
-          }
-        );
+      if (data.hits.length === 0) { this.notificationTry()
+        // Notiflix.Notify.warning(
+        //   'Sorry, there are no images matching your search query. Please try again.',
+        //   {
+        //     position: 'center-center',
+        //     fontSize: '18px',
+        //     cssAnimationStyle: 'zoom',
+        //     cssAnimationDuration: 1000,
+        //     width: '380px',
+        //   }
+        // );
       }
     } catch (error) {
       this.setState({ error: error.message });
@@ -81,14 +80,29 @@ export class App extends Component {
 
   handleFormSubmit = photoTag => {
     this.setState({ photoTag });
-    this.setState({ page: 1 });    
+    this.setState({ page: 1 });
   };
 
   handleLoadMore = () => {
     const page = this.state.page + 1;
-    this.setState({ page: page });  
+    this.setState({ page: page });
     this.fetchPhoto(this.state.photoTag, page);
   };
+
+  notificationTry() {
+    Notiflix.Notify.warning(
+      'Sorry, there are no images matching your search query. Please try again.',
+      {
+        position: 'center-center',
+        fontSize: '18px',
+        cssAnimationStyle: 'zoom',
+        cssAnimationDuration: 1000,
+        width: '380px',
+      }
+    );
+  }
+
+  notificationCatch() {}
 
   render() {
     const {
