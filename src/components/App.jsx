@@ -108,12 +108,8 @@ export class App extends Component {
 
     return (
       <div>
-        {/* <button type="button" onClick={toggleModal}>
-          Open modal
-        </button> */}
         <GlobalStyle />
         <Searchbar onSubmit={handleFormSubmit} />
-
         <ImageGallery photos={dataPhoto} openModal={openModal} />
         {isLoading && <Loader />}
         {showModal && (
@@ -123,13 +119,7 @@ export class App extends Component {
             onClose={toggleModal}
           />
         )}
-        {/* {dataPhoto && console.log('dataPhoto.length:', dataPhoto.length)}
-        {console.log('page:', page)} */}
         <Button handleLoadMore={handleLoadMore} />
-        {/* {dataPhoto && dataPhoto.length >= 12 && (
-          <Button handleLoadMore={this.handleLoadMore} />
-        )} */}
-
         <ToastContainer autoClose={3000} />
       </div>
     );
