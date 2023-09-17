@@ -24,7 +24,6 @@ export class App extends Component {
 
   componentDidUpdate(_, prevState) {
     const searchTag = this.state.photoTag;
-    // console.log("compdidup", this.state.page);
     if (prevState.photoTag !== searchTag) {
       this.setState({ dataPhoto: null });
       this.fetchPhoto(searchTag, this.state.page);
@@ -105,7 +104,7 @@ export class App extends Component {
       currentLargeImageUrl,
       currentImageTags,
     } = this.state;
-    const { handleFormSubmit, toggleModal } = this;
+    const { handleFormSubmit, toggleModal, handleLoadMore, openModal } = this;
 
     return (
       <div>
@@ -115,7 +114,7 @@ export class App extends Component {
         <GlobalStyle />
         <Searchbar onSubmit={handleFormSubmit} />
 
-        <ImageGallery photos={dataPhoto} openModal={this.openModal} />
+        <ImageGallery photos={dataPhoto} openModal={openModal} />
         {isLoading && <Loader />}
         {showModal && (
           <Modal
@@ -126,7 +125,7 @@ export class App extends Component {
         )}
         {/* {dataPhoto && console.log('dataPhoto.length:', dataPhoto.length)}
         {console.log('page:', page)} */}
-        <Button handleLoadMore={this.handleLoadMore} />
+        <Button handleLoadMore={handleLoadMore} />
         {/* {dataPhoto && dataPhoto.length >= 12 && (
           <Button handleLoadMore={this.handleLoadMore} />
         )} */}
