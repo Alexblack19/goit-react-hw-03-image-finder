@@ -24,7 +24,9 @@ export class App extends Component {
 
   componentDidUpdate(_, prevState) {
     const searchTag = this.state.photoTag;
-    if (prevState.photoTag !== searchTag) {
+    // console.log("compdidup", this.state.page);
+    if (prevState.photoTag !== searchTag) { 
+     
       this.setState({ dataPhoto: null });
       this.fetchPhoto(searchTag, this.state.page);
     }
@@ -79,16 +81,23 @@ export class App extends Component {
 
   handleFormSubmit = photoTag => {
     this.setState({ photoTag });
+    this.setState({ page: 1 });    
   };
 
   handleLoadMore = () => {
     const page = this.state.page + 1;
-    this.setState({ page: page });
+    this.setState({ page: page });  
     this.fetchPhoto(this.state.photoTag, page);
   };
 
   render() {
-    const { showModal, dataPhoto, isLoading, page, currentLargeImageUrl, currentImageTags } = this.state;
+    const {
+      showModal,
+      dataPhoto,
+      isLoading,
+      currentLargeImageUrl,
+      currentImageTags,
+    } = this.state;
     const { handleFormSubmit, toggleModal } = this;
 
     return (
@@ -108,8 +117,8 @@ export class App extends Component {
             onClose={toggleModal}
           />
         )}
-        {dataPhoto && console.log('dataPhoto.length:', dataPhoto.length)}
-        {console.log('page:', page)}
+        {/* {dataPhoto && console.log('dataPhoto.length:', dataPhoto.length)}
+        {console.log('page:', page)} */}
         <Button handleLoadMore={this.handleLoadMore} />
         {/* {dataPhoto && dataPhoto.length >= 12 && (
           <Button handleLoadMore={this.handleLoadMore} />

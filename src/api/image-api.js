@@ -8,8 +8,9 @@ export const getAllPhoto = async (photoTag, page) => {
   const response = await axios.get(`${BASE_URL}`, {
     params: {
       key: `${API_KEY}`,
-      q: `${photoTag}`,     
-      safesearch: true,     
+      q: `${photoTag.toLowerCase()}`,
+      safesearch: true,
+      image_type: 'photo',
       orientation: 'horizontal',
       page: page,
       per_page: `${numRequestedPhotos}`,
