@@ -42,25 +42,12 @@ export class App extends Component {
         this.setState({ dataPhoto: [...this.state.dataPhoto, ...data.hits] });
       }
 
-      if (data.hits.length === 0) { this.notificationTry()
-        // Notiflix.Notify.warning(
-        //   'Sorry, there are no images matching your search query. Please try again.',
-        //   {
-        //     position: 'center-center',
-        //     fontSize: '18px',
-        //     cssAnimationStyle: 'zoom',
-        //     cssAnimationDuration: 1000,
-        //     width: '380px',
-        //   }
-        // );
+      if (data.hits.length === 0) {
+        this.notificationTry();
       }
     } catch (error) {
       this.setState({ error: error.message });
-      Notiflix.Notify.warning(error, {
-        position: 'center-center',
-        fontSize: '16px',
-        width: '340px',
-      });
+      this.notificationCatch(error.message);
     } finally {
       this.setState({ isLoading: false });
     }
@@ -102,7 +89,13 @@ export class App extends Component {
     );
   }
 
-  notificationCatch() {}
+  notificationCatch(error) {
+    Notiflix.Notify.warning(error, {
+      position: 'center-center',
+      fontSize: '16px',
+      width: '340px',
+    });
+  }
 
   render() {
     const {
