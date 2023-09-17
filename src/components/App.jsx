@@ -4,7 +4,7 @@ import Notiflix from 'notiflix';
 import { Component } from 'react';
 import { GlobalStyle } from './GlobalStyle';
 import { Searchbar } from './Searchbar/Searchbar';
-import { getAllPhoto } from '../api/image-api';
+import { getAllPhoto, numRequestedPhotos } from '../api/image-api';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
@@ -20,6 +20,8 @@ export class App extends Component {
     isLoading: false,
     currentLargeImageUrl: '',
     currentImageTags: '',
+    currentHits: null,
+    totalHits: null,
   };
 
   componentDidUpdate(_, prevState) {
@@ -40,6 +42,9 @@ export class App extends Component {
       } else {
         this.setState({ dataPhoto: [...this.state.dataPhoto, ...data.hits] });
       }
+
+      this.setState({ currentHits: numRequestedPhotos * this.state.page });
+      this.setState({ totalHits: data.totalHits });
 
       if (data.hits.length === 0) {
         this.notificationTry();
@@ -119,7 +124,9 @@ export class App extends Component {
             onClose={toggleModal}
           />
         )}
-        <Button handleLoadMore={handleLoadMore} />
+        {dataPhoto && this.state.currentHits <= this.state.totalHits && (
+          <Button handleLoadMore={handleLoadMore} />
+        )}
         <ToastContainer autoClose={3000} />
       </div>
     );
