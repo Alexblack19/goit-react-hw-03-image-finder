@@ -18,6 +18,8 @@ export class App extends Component {
     showModal: false,
     photoTag: '',
     isLoading: false,
+    currentLargeImageUrl: '',
+    currentImageTags: '',
   };
 
   componentDidUpdate(_, prevState) {
@@ -63,6 +65,14 @@ export class App extends Component {
     }
   };
 
+  openModal = e => {
+    const currentLargeImageUrl = e.target.dataset.large;
+    const currentImageTags = e.target.alt;
+
+    this.setState({ currentLargeImageUrl, currentImageTags });
+    this.toggleModal();
+  };
+
   toggleModal = () => {
     this.setState(({ showModal }) => ({ showModal: !showModal }));
   };
@@ -78,7 +88,7 @@ export class App extends Component {
   };
 
   render() {
-    const { showModal, dataPhoto, isLoading, page } = this.state;
+    const { showModal, dataPhoto, isLoading, page, currentLargeImageUrl, currentImageTags } = this.state;
     const { handleFormSubmit, toggleModal } = this;
 
     return (
@@ -89,20 +99,21 @@ export class App extends Component {
         <GlobalStyle />
         <Searchbar onSubmit={handleFormSubmit} />
 
-        <ImageGallery photos={dataPhoto} />
+        <ImageGallery photos={dataPhoto} openModal={this.openModal} />
         {isLoading && <Loader />}
         {showModal && (
           <Modal
+            imageUrl={currentLargeImageUrl}
+            imageTags={currentImageTags}
             onClose={toggleModal}
-            image={
-              'https://pixabay.com/get/gd627b425afcad78d2020b32bc962b5fb8342c15634b91ef0529e6d8e455f3353d1cd65ef50aedf571dc6eef264b47b376516f1bccec8f168e591feca2c35d213_1280.jpg'
-            }
           />
         )}
-
-        {dataPhoto && dataPhoto.length >= 12 && (
+        {dataPhoto && console.log('dataPhoto.length:', dataPhoto.length)}
+        {console.log('page:', page)}
+        <Button handleLoadMore={this.handleLoadMore} />
+        {/* {dataPhoto && dataPhoto.length >= 12 && (
           <Button handleLoadMore={this.handleLoadMore} />
-        )}
+        )} */}
 
         <ToastContainer autoClose={3000} />
       </div>
