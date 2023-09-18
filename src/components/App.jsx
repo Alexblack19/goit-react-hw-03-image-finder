@@ -108,6 +108,8 @@ export class App extends Component {
       isLoading,
       currentLargeImageUrl,
       currentImageTags,
+      currentHits,
+      totalHits,
     } = this.state;
     const { handleFormSubmit, toggleModal, handleLoadMore, openModal } = this;
 
@@ -124,7 +126,7 @@ export class App extends Component {
             onClose={toggleModal}
           />
         )}
-        {dataPhoto && this.state.currentHits <= this.state.totalHits && (
+        {dataPhoto && currentHits <= totalHits && (
           <Button handleLoadMore={handleLoadMore} />
         )}
         <ToastContainer autoClose={3000} />
