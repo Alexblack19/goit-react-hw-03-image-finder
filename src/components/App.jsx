@@ -12,8 +12,7 @@ import { Modal } from './Modal/Modal';
 
 export class App extends Component {
   state = {
-    dataPhoto: null,
-    error: '',
+    dataPhoto: null,   
     page: 1,
     showModal: false,
     photoTag: '',
@@ -49,8 +48,7 @@ export class App extends Component {
       if (data.hits.length === 0) {
         this.notificationTry();
       }
-    } catch (error) {
-      this.setState({ error: error.message });
+    } catch (error) {      
       this.notificationCatch(error.message);
     } finally {
       this.setState({ isLoading: false });
