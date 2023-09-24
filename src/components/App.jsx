@@ -45,7 +45,7 @@ export class App extends Component {
       this.setState({ currentHits: NUM_REQUESTED_PHOTOS * this.state.page });
       this.setState({ totalHits: data.totalHits });
 
-      if (data.hits.length === 0) {
+      if (!data.hits.length) {
         this.notificationTry();
       }
     } catch (error) {      
