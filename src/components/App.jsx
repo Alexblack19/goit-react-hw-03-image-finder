@@ -28,7 +28,7 @@ export class App extends Component {
     if (prevState.photoTag !== searchTag) {
       this.setState({ dataPhoto: [] });
       this.fetchPhoto(searchTag, this.state.page);
-    }
+    } 
   }
 
   fetchPhoto = async (searchTag, page) => {
