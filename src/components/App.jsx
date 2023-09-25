@@ -28,7 +28,7 @@ export class App extends Component {
     if (prevState.photoTag !== searchTag) {
       this.setState({ dataPhoto: [] });
       this.fetchPhoto(searchTag, this.state.page);
-    } 
+    }
   }
 
   fetchPhoto = async (searchTag, page) => {
@@ -39,7 +39,9 @@ export class App extends Component {
       if (!this.state.dataPhoto.length) {
         this.setState({ dataPhoto: data.hits });
       } else {
-        this.setState({ dataPhoto: [...this.state.dataPhoto, ...data.hits] });
+        this.setState(prev => ({
+          dataPhoto: [...prev.dataPhoto, ...data.hits],
+        }));
       }
 
       this.setState({ currentHits: NUM_REQUESTED_PHOTOS * this.state.page });
@@ -68,6 +70,7 @@ export class App extends Component {
   };
 
   handleFormSubmit = photoTag => {
+    console.log('submit');
     this.setState({ photoTag });
     this.setState({ page: 1 });
   };
