@@ -30,13 +30,15 @@ export class App extends Component {
       this.fetchPhoto(searchTag, this.state.page);
     }
 
-    function smoothScrollGallery() {
-      window.scrollBy({
-        top: window.innerHeight * 0.8,
-        behavior: 'smooth',
-      });
+    if (this.state.page !== 1) {
+      function smoothScrollGallery() {
+        window.scrollBy({
+          top: window.innerHeight * 0.8,
+          behavior: 'smooth',
+        });
+      }
+      smoothScrollGallery();
     }
-    smoothScrollGallery();
   }
 
   fetchPhoto = async (searchTag, page) => {
